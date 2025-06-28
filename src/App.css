@@ -36,3 +36,134 @@
     transform: rotate(360deg);
   }
 }
+
+/* الوضع الليلي */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .App-header {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .card,
+body.dark-mode .form-control,
+body.dark-mode .btn {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+body.dark-mode input::placeholder {
+  color: #bbb !important;
+}
+
+body.dark-mode .btn-warning {
+  background-color: #fbc02d !important;
+  border-color: #fbc02d !important;
+  color: #000 !important;
+}
+
+body.dark-mode .btn-success {
+  background-color: #2e7d32 !important;
+  border-color: #2e7d32 !important;
+}
+
+body.dark-mode .btn-primary {
+  background-color: #3a3aef !important;
+  border-color: #3a3aef !important;
+}
+
+body.dark-mode .shadow-sm {
+  box-shadow: none !important;
+}
+
+body.dark-mode .border {
+  border-color: #444 !important;
+}
+
+/* أيقونة أوقات الصلاة */
+.prayer-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease;
+}
+
+.prayer-icon:hover {
+  transform: scale(1.1);
+}
+
+/* صندوق أوقات الصلاة */
+.prayer-times {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: right;
+  z-index: 999;
+}
+
+/* تجاوب الهواتف */
+@media (max-width: 600px) {
+  /* تعديل الزرار */
+  button {
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+    transition: all 0.3s ease;
+  }
+
+  /* تعديل زر أيقونة أوقات الصلاة */
+  button[aria-label="Toggle Prayer Times"] {
+    padding: 8px !important;
+    border-radius: 50% !important;
+    width: auto !important;
+  }
+
+  /* تعديل صندوق أوقات الصلاة */
+  .prayer-icon {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .prayer-times {
+    top: auto;
+    bottom: 70px;
+    right: 20px;
+    text-align: center;
+  }
+
+  /* تكبير مدخلات النص */
+  input.form-control {
+    font-size: 16px !important;
+    padding: 10px !important;
+  }
+
+  /* حواف للصفحة */
+  body {
+    padding: 0 10px;
+  }
+}
+.sura-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.sura-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}

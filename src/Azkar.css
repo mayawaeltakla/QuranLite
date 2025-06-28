@@ -1,0 +1,35 @@
+.azkar-box {
+  background-color: #f9f9f9;
+  color: #222;
+  max-width: 400px;
+  margin: 30px auto;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.zekr-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.azkar-box button {
+  transition: transform 0.2s ease;
+}
+
+.azkar-box button:hover {
+  transform: scale(1.05);
+}
+
+/* الوضع الليلي */
+body.dark-mode .azkar-box {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark-mode .azkar-box .btn-success {
+  background-color: #2e7d32 !important;
+  border-color: #2e7d32 !important;
+  color: #fff !important;
+}
