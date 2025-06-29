@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/QuranLite/static/css/main.2aada6e6.css",
+    "main.js": "/QuranLite/static/js/main.61c74cae.js",
+    "static/js/453.6eb22d85.chunk.js": "/QuranLite/static/js/453.6eb22d85.chunk.js",
+    "index.html": "/QuranLite/index.html",
+    "main.2aada6e6.css.map": "/QuranLite/static/css/main.2aada6e6.css.map",
+    "main.61c74cae.js.map": "/QuranLite/static/js/main.61c74cae.js.map",
+    "453.6eb22d85.chunk.js.map": "/QuranLite/static/js/453.6eb22d85.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2aada6e6.css",
+    "static/js/main.61c74cae.js"
+  ]
+}
