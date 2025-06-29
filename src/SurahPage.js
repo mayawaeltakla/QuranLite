@@ -26,16 +26,32 @@ const SurahPage = () => {
   }, [id]);
 
   const playAyah = (audioUrl, ayahNum) => {
-    if (currentAudio) {
-      currentAudio.pause();
+    // إذا نفس الآية شغالة، وقفها مع إعادة ضبط الوقت
+    if (playingAyah === ayahNum) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0; // نرجع الصوت لبداية الآية
+      }
       setCurrentAudio(null);
       setPlayingAyah(null);
+      return;
+    }
+
+    // إذا في صوت شغال مختلف، وقف الصوت السابق مع إعادة ضبط الوقت
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
     }
 
     const audio = new Audio(audioUrl);
     audio.play();
     setCurrentAudio(audio);
     setPlayingAyah(ayahNum);
+
+    audio.onended = () => {
+      setPlayingAyah(null);
+      setCurrentAudio(null);
+    };
   };
 
   if (loading) {

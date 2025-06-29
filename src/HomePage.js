@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Container, Row, Col, Button, Spinner, Toast } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 
-
 const HomePage = () => {
   const [suras, setSuras] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,20 +23,16 @@ const HomePage = () => {
       .catch(() => setLoading(false));
   }, []);
 
-
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
     }
-
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
-
 
   const addToFavorites = (suraNumber) => {
     if (!favorites.includes(suraNumber)) {
@@ -50,14 +45,17 @@ const HomePage = () => {
     }
   };
 
-
   const handlePlay = (suraNumber) => {
     if (playingSura === suraNumber) {
-      audioRef.current.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
       setPlayingSura(null);
     } else {
       if (audioRef.current) {
         audioRef.current.pause();
+        audioRef.current.currentTime = 0;
       }
 
       const audio = new Audio(
@@ -66,14 +64,18 @@ const HomePage = () => {
 
       audioRef.current = audio;
 
-      audio.play();
-
-      setPlayingSura(suraNumber);
-
-      audio.onended = () => setPlayingSura(null);
+      audio
+        .play()
+        .then(() => {
+          setPlayingSura(suraNumber);
+          audio.onended = () => setPlayingSura(null);
+        })
+        .catch((error) => {
+          console.error("فشل تشغيل الصوت:", error);
+          setShowToast({ show: true, message: "حدث خطأ أثناء تشغيل التلاوة ❌" });
+        });
     }
   };
-
 
   if (loading) {
     return (
@@ -83,7 +85,6 @@ const HomePage = () => {
       </div>
     );
   }
-
 
   return (
     <Container className="mt-4">
@@ -105,7 +106,6 @@ const HomePage = () => {
         {suras.map((sura) => (
           <Col key={sura.number} xs={12} md={6} lg={4} className="mb-4">
             <div className="border rounded p-3 shadow-sm h-100 d-flex flex-column justify-content-between">
-
               <div>
                 <h5>{sura.name.long}</h5>
                 <p>عدد الآيات: {sura.numberOfVerses}</p>
@@ -116,10 +116,9 @@ const HomePage = () => {
                   variant={playingSura === sura.number ? "danger" : "success"}
                   size="sm"
                   onClick={() => handlePlay(sura.number)}
-                >
+                  >
                   {playingSura === sura.number ? "إيقاف التلاوة" : "تشغيل التلاوة"}
                 </Button>
-
                 <Button
                   variant="primary"
                   size="sm"
@@ -127,7 +126,7 @@ const HomePage = () => {
                 >
                   تفاصيل
                 </Button>
-<Button
+                <Button
                   variant="warning"
                   size="sm"
                   onClick={() => addToFavorites(sura.number)}
@@ -152,6 +151,5 @@ const HomePage = () => {
     </Container>
   );
 };
-
 
 export default HomePage;

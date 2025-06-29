@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import SurahPage from "./SurahPage";
@@ -7,6 +7,7 @@ import PrayerTimes from "./PrayerTimes";
 import TasbeehCounter from "./TasbeehCounter";
 import { FaMosque } from "react-icons/fa";
 import "./App.css";
+import Azkar from "./Azkar";
 
 function App() {
   // حالة إظهار/إخفاء أوقات الصلاة
@@ -31,7 +32,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename="/quranlite">
       <div className="App">
         {/* زر إظهار/إخفاء أوقات الصلاة */}
         <button
@@ -55,6 +56,7 @@ function App() {
             element={
               <>
                 <HomePage />
+                <Azkar />
                 <TasbeehCounter />
               </>
             }
