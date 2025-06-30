@@ -64,6 +64,9 @@ function App() {
           <Route path="/surah/:id" element={<SurahPage />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
+        <footer className="text-center mt-5 mb-3 text-muted">
+  © 2025 Developed by Maya Wael Takla
+</footer>
       </div>
     </Router>
   );

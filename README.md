@@ -35,3 +35,12 @@ git clone https://github.com/your-username/quran-surahs-app.git
 cd quran-surahs-app
 npm install
 npm start
+🔗 راح يفتح التطبيق تلقائيًا على الرابط: http://localhost:3000
+
+
+---
+
+📱 فتح التطبيق على الهاتف
+
+يمكنك تجربة التطبيق على الهاتف مباشرة من خلال الرابط التالي:
+https://mayawaeltakla.github.io/QuranLite/
